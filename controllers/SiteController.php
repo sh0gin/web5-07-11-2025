@@ -203,7 +203,7 @@ class SiteController extends Controller
         $data = waySearch::firstExport();
         $str = "Начало;Конец;Длина;Скорость;Время";
         foreach ($data as $row) {
-            $str = $row['start'] . ";"
+            $str .= $row['start'] . ";"
                 . $row['end'] . ";"
                 . $row['length'] . ';'
                 . $row['speed_average'] . ';'
@@ -211,14 +211,14 @@ class SiteController extends Controller
         }
         $str = iconv('utf-8', 'windows-1251', $str);
         Yii::$app->response->sendContentAsFile($str, 'экспорт.csv')->send();
-    }
+    }   
 
     public function actionExportSecond()
     {
         $data = rootSearch::secondExport();
         $str = "Минуты;";
         foreach ($data as $row) {
-            $str = $row['minuts'] . "\r\n";
+            $str .= $row['minuts'] . "\r\n";
         }
         $str = iconv('utf-8', 'windows-1251', $str);
         Yii::$app->response->sendContentAsFile($str, 'экспорт.csv')->send();
@@ -229,7 +229,7 @@ class SiteController extends Controller
         $data = rootSearch::thirdExport();
         $str = "Номер маршрута;Начало пути;Конец пути;Расстояние";
         foreach ($data as $row) {
-            $str = $row['number'] . ";"
+            $str .= $row['number'] . ";"
                 . $row['start'] . ";"
                 . $row['end'] . ';'
                 . $row['length'] . "\r\n";
@@ -243,7 +243,7 @@ class SiteController extends Controller
         $data = rootSearch::fourthExport();
         $str = "Вид траспорта;Прибыль в день;";
         foreach ($data as $row) {
-            $str = $row['title'] . ";"
+            $str .= $row['title'] . ";"
                 . $row['profit'] . "\r\n";
         }
         $str = iconv('utf-8', 'windows-1251', $str);
